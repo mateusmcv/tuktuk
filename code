@@ -1,4 +1,3 @@
-######## TUKTUK ######## 
 data<-read.csv("/Users/oper/Desktop/Mateus/R/TukTuk/SriLankaSurvey_DATA_2015-07-31_1137.xlsx - SriLankaSurvey_DATA_2015-07-31_.csv",sep=",")
 #numeric data.frame
 numeric <- with(data, data.frame(age, hours_wkvehicle, day_wkvehicle, 
@@ -215,7 +214,7 @@ exp(confint(nearmiss))
 disab <-glm(numericRTC$disability_crash ~ numericRTC$age + numericRTC$hours_wkvehicle + numericRTC$day_wkvehicle +
                  numericRTC$time_start_wk + numericRTC$time_stop_wk + numericRTC$time_motodr + numericRTC$helmet_mc +
                  numericRTC$belt_driver + numericRTC$belt_back + numericRTC$belt_passenger +
-                 numericRTC$stop_fast + numericRTC$road_wrongside,family=gaussian, data=numericRTC)
+                 numericRTC$stop_fast + numericRTC$road_wrongside,family=binomial, data=numericRTC)
 summary(disab)
 exp(coef(disab))
 exp(confint(disab))
@@ -236,5 +235,7 @@ dayswork <-glm(numericRTC$missed_work_crash ~ numericRTC$age + numericRTC$hours_
             numericRTC$stop_fast + numericRTC$road_wrongside, family=gaussian, data=numericRTC)
 summary(dayswork)
 exp(coef(dayswork))
+exp(confint(dayswork))
+str(numericRTC)
 exp(confint(dayswork))
 str(numericRTC)
